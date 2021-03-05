@@ -15,14 +15,11 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-
-        $connection = new mysqli($servername, $username, $password);
-
+        $dbname = "miklo_benjamin_eplanner";
+        $connection = new mysqli($servername, $username, $password, $dbname);
         if ($connection->connect_error) {
             die("Connection failed: " . $connection->connect_error);
         }
-
-        $connection = new mysqli($servername, $username, $password, "miklo_benjamin_eplanner");
         $uname = clearInput($_POST['username']);
         $fname = clearInput($_POST['fname']);
         $lname = clearInput($_POST['lname']);
@@ -62,9 +59,9 @@
                         $subject = "EPlanner Registration Confirmation";
                         $message = "
                             <h1 align = 'center'>A registration has been detected with this email on EPlanner.</h1>
-                            <a href = 'http://localhost/EPlannerindex.php'>www.eplanner.com</a>
+                            <a href = 'http://localhost/EPlanner/index.php'>www.eplanner.com</a>
                             <h2>Username: ".$uname."<br>Password: ".$pwd."<br>First Name: ".$fname."<br>Last Name: ".$lname."</h2>
-                            <h1>If you made this operation, please confirm your account clicking on the button below, else just leave this email</h2>
+                            <h1>If you made this operation, please confirm your account clicking on the button below</h2>
                             <form action = 'http://localhost/EPlanner/addUser.php' method = 'POST'>
                                 <input style = 'display: none;' type = 'text' name = 'fname' value = '".$fname."'>
                                 <input style = 'display: none;' type = 'text' name = 'lname' value = '".$lname."'>
@@ -84,8 +81,8 @@
         else{
             $_SESSION["eu"] = "Username cannot be empty and it's length must be between 4 and 32";
         }
+        $connection->close();
     }
     echo "<script>window.location.assign('".$backto."')</script>";
     exit;
-    $connection->close();
 ?>

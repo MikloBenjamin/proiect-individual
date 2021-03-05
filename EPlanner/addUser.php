@@ -11,7 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $connection = new mysqli($servername, $username, $password, "miklo_benjamin_eplanner");
+    $dbname = "miklo_benjamin_eplanner"
+    $connection = new mysqli($servername, $username, $password, $dbname);
     $uname = clearInput($_POST['uname']);
     $fname = clearInput($_POST['fname']);
     $lname = clearInput($_POST['lname']);
@@ -30,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else{
         die("ERROR: " . $connection->error);
     }
+    $connection->close();
 }
 header($backto);
 exit;
-$connection->close();
 ?>

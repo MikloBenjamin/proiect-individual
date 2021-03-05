@@ -39,4 +39,4 @@ create table if not exists gusers(
     id int(11) not null AUTO_INCREMENT,
     gname varchar(32),
     primary key(id)
-)
+);

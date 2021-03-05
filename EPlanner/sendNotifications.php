@@ -3,7 +3,8 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $connection = new mysqli($servername, $username, $password, "miklo_benjamin_eplanner");
+    $dbname = "miklo_benjamin_eplanner";
+    $connection = new mysqli($servername, $username, $password, $dbname);
     $date = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d")+14, date("Y")));
     $sql = "SELECT id, username, ename, edesc, edate from events where important = 1 and edate < '".$date."' and notified = 0";
     $result = $connection->query($sql);

@@ -43,7 +43,6 @@
         if($_SESSION["user"] == "guest"){
             $bto .= "?guest=1";
         }
-        header($bto);
     }
     else{
         $_SESSION["mustselect"] = "You must select a date before submitting";
@@ -51,7 +50,7 @@
         if($_SESSION["user"] == "guest"){
             $bto .= "?guest=1";
         }
-        header($bto);
     }
+    header($bto);
     
 ?>

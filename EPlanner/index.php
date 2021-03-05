@@ -28,6 +28,9 @@
 <body onload = "rdy()">
     <?php
         if(isset($_SESSION["user"])){
+            // benikiraly2 is a username i set with which i send emails to users when i log in to it
+            // these emails are sent to users who have important events that are going to happen in less than 2 weeks
+            // and of course, these emails are only sent if the user haven't been notified yet 
             if(strcmp("benikiraly2", $_SESSION["user"]) == 0){
                 include('sendNotifications.php');
             }
@@ -118,8 +121,8 @@
                 echo '<h2 align = "center"><u><i>'. $_SESSION["mustselect"] . '</i></u></h2>';
                 unset($_SESSION["mustselect"]);
             }
+            $connection->close();
         }
-        $connection->close();
     ?>
     <script src = "JS/js.js"></script>  
 </body>
